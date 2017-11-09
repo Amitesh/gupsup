@@ -1,0 +1,37 @@
+{
+  "name": "gupsup",
+  "version": "0.1.0",
+  "description": "A simple chat application using React.js, Flux and RoR.",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "classnames": "^2.1.5",
+    "envify": "~1.2.1",
+    "es6-promise": "~1.0.0",
+    "flux": "^2.1.1",
+    "keymirror": "^0.1.1",
+    "lodash": "^3.10.1",
+    "moment": "^2.10.6",
+    "object-assign": "^4.0.1",
+    "react": "~0.13.1",
+    "react-router": "~0.13.3",
+    "reactify": "~1.1.0"
+  },
+  "devDependencies": {
+    "browserify": "~10.2.1",
+    "envify": "~1.2.1",
+    "glob": "^5.0.15",
+    "gulp": "~3.8.0",
+    "gulp-concat": "~2.2.0",
+    "gulp-sourcemaps": "~1.5.2",
+    "gulp-uglify": "~0.3.1",
+    "gulp-util": "~3.0.4",
+    "jest-cli": "~0.4.5",
+    "lodash.assign": "~3.2.0",
+    "reactify": "~1.1.0",
+    "vinyl-buffer": "~1.0.0",
+    "vinyl-source-stream": "~1.1.0",
+    "watchify": "~2.2.1"
+  },
+  "author": "Amitesh",
+  "license": "MIT"
+}

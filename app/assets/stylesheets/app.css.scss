@@ -1,0 +1,292 @@
+/**
+ * Mixin
+ *
+ * @usage 
+ * 
+  .element {
+    @include prefix((transform: translate(-50%, -50%)), webkit ms);
+  }
+ */
+@mixin prefix($map, $vendors: webkit moz ms o) {
+  @each $prop, $value in $map {
+    @if $vendors {
+      @each $vendor in $vendors {
+        #{"-" + $vendor + "-" + $prop}: #{$value};
+      }
+    }
+
+    // Dump regular property anyway
+    #{$prop}: #{$value};
+  }
+}
+
+body {
+  padding-top: 10px;
+  padding-bottom: 40px;
+}
+
+/* Custom container */
+
+.container-narrow {
+  margin: 0 auto;
+  max-width: 700px;
+
+  > hr {
+    margin: 30px 0;
+  }
+
+  .header {
+    h5 {
+      color: #9C9C9C;
+    }
+  }
+}
+
+.jumbotron {
+  padding: 1px 0;
+  text-align: center;
+
+  h1 {
+    font-size: 52px;
+    line-height: 1;
+  }
+
+  .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+  }
+}
+
+/* User sign in and sign forms. */
+
+.border-form-div {
+  max-width: 300px;
+  padding: 19px 29px 29px;
+  margin: 0 auto 20px;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+  .form-signin-heading,
+  .checkbox {
+    margin-bottom: 10px;
+
+    input[type="checkbox"] {
+      margin-left: 0px;
+    }
+  }
+
+  input {
+    &[type="text"],
+    &[type="email"],
+    &[type="password"] {
+      font-size: 16px;
+      height: auto;
+      margin-bottom: 15px;
+      padding: 7px 9px;
+    }
+  }
+}
+
+.login-box {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.jumbotron p.lead {
+  color: #8A8A8A;
+  margin-top: -10px;
+  font-size: 16px;
+}
+
+.dimmed {
+  color: #dfdfdf;
+}
+
+/* Chat module */
+.chat-box {
+  .streams,
+  .conversation {
+    /*height: 300px;
+    overflow-y: auto;*/
+  }
+
+  .col-md-5,
+  .col-md-7 {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .streams {
+    height: 350px;
+    overflow-y: auto;
+
+    .stream {
+      overflow: hidden;
+      text-align: left;
+
+      .details {
+        width: 85%;
+      }
+
+      img {
+        border-radius: 50%;
+        vertical-align: bottom;
+        background-color: #CACACA;
+      }
+
+      .name {
+        padding-left: 10px;
+        text-overflow: ellipsis;
+        width: 85%;
+        overflow: hidden;
+        display: inline-block;
+      }
+
+      .badge {
+        margin-top: 6px;
+        background-color: #94C9E8;
+        margin-top: 6px;
+        font-weight: normal;
+        text-shadow: 1px 1px 1px #8E8E8E;
+      }
+
+      &.active {
+        .badge {
+          background-color: #FFFFFF;
+        }
+      }
+    }
+  }
+
+  .conversation {
+    position: relative;
+    padding: 0px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-bottom: 0;
+    border-radius: 4px;
+
+    .messages {
+      overflow-y: auto;
+      height: 300px;
+      margin-bottom: 50px;
+      padding: 10px 15px;
+    }
+  }
+
+  .message {
+    margin-bottom: 10px;
+
+    .media-body {
+      text-align: left;
+    }
+
+    .me {
+      .media-body {
+        text-align: right;
+      }
+    }
+
+    .media-heading {
+      font-size: 14px;
+      color: #A2A1A1;
+    }
+
+    img.media-object {
+      border-radius: 50%;
+      height: 50px;
+      background-color: #CACACA;
+    }
+
+    .content {
+      font-size: 13px;
+      min-height: 37px;
+    }
+
+    .info-bar {
+      color: rgb(175, 175, 175);
+      font-size: 12px;
+
+      .sending,
+      .sent,
+      .received,
+      .read {
+        img {
+          height: 12px;
+          padding-left: 4px;
+          margin-top: -3px;
+          opacity: 0.6;
+        }
+      }
+    }
+
+    .name-time-sep {
+      padding: 0px 5px;
+    }
+  }
+
+  .editor {
+    position: absolute;
+    bottom: 0px;
+    margin-right: 0px;
+    left: 0px;
+
+    .message-edit-box {
+      height: 50px;
+    }
+
+    .send-btn {
+      margin-top: -1px;
+      padding: 9px 20px;
+    }
+  }
+}
+
+/**
+ * Overriding padding
+ */
+.jumbotron {
+  padding: 1px 0 !important;
+}
+
+.animated {
+  @include prefix((animation-duration: 5s), webkit moz ms o);
+
+  @include prefix((animation-fill-mode: both), webkit moz ms o);
+
+  @include prefix((animation-timing-function: ease-out), webkit moz ms o);
+
+  @include prefix((animation-iteration-count: infinite), webkit moz ms o);
+}
+
+@-webkit-keyframes flash {
+  0%, 50%, 100% {
+    opacity: 0.5;
+  }
+
+  25%, 75% {
+    opacity: 0;
+  }
+}
+
+@keyframes flash {
+  0%, 50%, 100% {
+    opacity: 0.5;
+  }
+
+  25%, 75% {
+    opacity: 0;
+  }
+}
+
+.flash,
+.animation-sending {
+  -webkit-animation-name: flash;
+  animation-name: flash;
+}

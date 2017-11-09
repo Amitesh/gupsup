@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"  >
+    <meta http-equiv="Content-Script-Type" content="text/javascript"  >
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <!-- Mobile -->
+    <meta name="apple-mobile-web-app-capable" content="yes"  >
+    <meta name="apple-mobile-web-app-status-bar-style" content="default"  >
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <meta charset="utf-8">
+    <title>Gupsup</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+
+    <div class="container-narrow">
+      <header class="header">
+        <%= render 'layouts/user_header' %>
+        <h3 class="muted"><%= link_to "Gupsup", root_path %></h3>
+        <h5 class="muted">Chowpal for casual chit chat</h5>
+      </header>
+      <hr />
+      <%= yield %>
+    </div>
+    
+    <!-- Add configs for app -->
+    <script type="text/javascript">
+      var current_user = <%= raw((current_user || {}).to_json) %>;
+          current_user['avatar'] = "<%= (current_user.avatar)[:big] if current_user %>";
+      var gupsupChannels = <%= raw(Message.channels.to_json) %>
+    </script>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <!-- Subscribe to faye server on main channel 'gupsup' -->
+    <%= subscribe_to "/gupsup/**" if current_user %>
+  </body>
+</html>
